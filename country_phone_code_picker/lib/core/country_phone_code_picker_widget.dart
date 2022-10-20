@@ -281,53 +281,50 @@ class CountryPhoneCodePicker extends StatelessWidget {
       },
       child: GetBuilder<CountryController>(
         builder: (controller) {
-          return Padding(
-            padding: EdgeInsets.all(10),
-            child: Container(
-              height: height,
-              width: width,
-              padding: contentPadding,
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.circular(borderRadius),
-                border: Border.all(color: borderColor, width: borderWidth),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  showFlag == true
-                      ? Container(
-                    height: flagHeight,
-                    width: flagWidth,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(flagBorderRadius),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                          countryFlagApi + controller.selectedCountry.code,
+          return Container(
+            height: height,
+            width: width,
+            padding: contentPadding,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(borderRadius),
+              border: Border.all(color: borderColor, width: borderWidth),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                showFlag == true
+                    ? Container(
+                        height: flagHeight,
+                        width: flagWidth,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(flagBorderRadius),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              countryFlagApi + controller.selectedCountry.code,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  )
-                      : const SizedBox(),
-                  showName == true
-                      ? Expanded(
-                    child: Text(
-                      controller.selectedCountry.name,
-                      style: countryNameTextStyle,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  )
-                      : const SizedBox(),
-                  showPhoneCode == true
-                      ? Text(
-                    controller.selectedCountry.phoneCode,
-                    style: countryPhoneCodeTextStyle,
-                  )
-                      : const SizedBox(),
-                  actionIcon,
-                ],
-              ),
+                      )
+                    : const SizedBox(),
+                showName == true
+                    ? Expanded(
+                        child: Text(
+                          controller.selectedCountry.name,
+                          style: countryNameTextStyle,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    : const SizedBox(),
+                showPhoneCode == true
+                    ? Text(
+                        controller.selectedCountry.phoneCode,
+                        style: countryPhoneCodeTextStyle,
+                      )
+                    : const SizedBox(),
+              //  actionIcon,
+              ],
             ),
           );
         },
