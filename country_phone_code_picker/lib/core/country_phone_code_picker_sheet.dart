@@ -133,48 +133,24 @@ class _CountryPhoneCodePickerModalSheetState
           ),
           backgroundColor: widget.searchSheetBackground,
           elevation: 0,
-          // leading: IconButton(
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          //   icon: searchBarLeadingIcon,
-          // ),
-          title: TextFormField(
+          title: TextField(
             controller: searchBarInput,
             onChanged: (query) {
               searchController.updateQueryList(query);
             },
+            autofocus: true,
             decoration: InputDecoration(
-              hintText: widget.searchBarHintText,
-              hintStyle: widget.searchBarHintStyle,
-              labelText: widget.searchBarLabelText,
-              labelStyle: widget.searchBarLabelStyle,
-              helperText: widget.searchBarHelperText,
-              helperStyle: widget.searchBarHelperStyle,
-              prefixText: widget.searchBarPrefixText,
-              prefixStyle: widget.searchBarPrefixStyle,
-              prefixIcon: widget.searchBarPrefixIcon,
-              suffix: IconButton(
+              prefixIcon: const Icon(Icons.search),
+              suffixIcon: IconButton(
+                icon: const Icon(Icons.cancel_rounded, color: Colors.black),
                 onPressed: () {
                   searchBarInput!.clear();
                   searchController.updateQueryList('');
                 },
-                icon: const Icon(Icons.cancel_rounded, color: Colors.black),
               ),
-              contentPadding: widget.searchBarContentPadding,
-              border: widget.border,
-              errorBorder: widget.errorBorder,
-              enabledBorder: widget.enabledBorder,
-              focusedBorder: widget.focusedBorder,
-              disabledBorder: widget.disabledBorder,
-              focusedErrorBorder: widget.focusedErrorBorder,
+              border: InputBorder.none,
+              hintText: 'Search For Your Country',
             ),
-            cursorColor: widget.searchBarCursorColor,
-            cursorHeight: widget.searchBarCursorHeight,
-            cursorWidth: widget.searchBarCursorWidth,
-            style: widget.style,
-            keyboardType: widget.keyboardType,
-            showCursor: widget.showCursor,
           ),
           centerTitle: true,
         ),
